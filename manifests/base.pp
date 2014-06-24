@@ -4,13 +4,7 @@
 #
 class sysctl::base (
   $purge = false,
-) {
-
-  if $purge {
-    $recurse = true
-  } else {
-    $recurse = false
-  }
+){
 
   file { '/etc/sysctl.d':
     ensure  => directory,
@@ -19,8 +13,7 @@ class sysctl::base (
     mode    => '0755',
     # Magic hidden here
     purge   => $purge,
-    recurse => $recurse,
+    recurse => $purge
   }
-
 }
 
