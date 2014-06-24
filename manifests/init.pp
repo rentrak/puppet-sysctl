@@ -41,6 +41,7 @@ define sysctl (
       group   => 'root',
       mode    => '0644',
       content => template("${module_name}/sysctl.d-file.erb"),
+      require => File['/etc/sysctl.d'],
       notify  => [
         Exec["sysctl-${title}"],
         Exec["update-sysctl.conf-${title}"],
